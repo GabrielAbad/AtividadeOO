@@ -15,7 +15,6 @@ class Inventory():
     #Inicia uma lista vazia 
     def __init__(self):
         self.inv = []
-    
     def add_item(self,barcode,amount):
         item = [barcode,amount]
         self.inv.append(item)
@@ -25,20 +24,24 @@ class Inventory():
         print(self.inv)
     
     # Vende um produto
-    def sell_product(self, product):
-       if product in self.inv:
-           self.inv.remove(product)
-       else:
-           raise ProductNotFoundError("Product not found in the inventory.")
+    def sell_product(self, barcode):
+       for product_array in self.inv:
+           if barcode in product_array:
+                self.inv.remove(product_array)
+           else:
+                raise ProductNotFoundError("Product not found in the inventory.")
 
     # Para devolver um produto    
-    def return_product(self, product):
-        self.inv.append(product)
+    def return_product(self, barcode):
+        self.inv.append(barcode)
 
-    def restock_product(self, product, quantity):
+    def restock_product(self, barcode, amount):
         # Supondo que a quantidade seja adicionada ao estoque
-        for i in range(quantity):
-            self.add_item(product)
+        item = [barcode,amount]
+        self.inv.append(item)
+
 
 class ProductNotFoundError(Exception):
     pass
+#testando a estrutura de classes criada, exemplo
+
