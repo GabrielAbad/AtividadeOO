@@ -1,4 +1,3 @@
-from products import *
 from enum import Enum
 
 class Brand(Enum):
@@ -9,6 +8,7 @@ class Brand(Enum):
     PEPSI = "Pepsi"
     NESTLE = "Nestlé"
     LINDT = "Lindt"
+    TERMOLAR = "Termolar"
 
 class Inventory():
     
@@ -43,5 +43,3 @@ class Inventory():
 
 class ProductNotFoundError(Exception):
     pass
-#testando a estrutura de classes criada, exemplo
-
